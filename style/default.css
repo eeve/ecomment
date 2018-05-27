@@ -1,4 +1,4 @@
-.gitment-container {
+.ecomment-container {
   font-family: sans-serif;
   font-size: 14px;
   line-height: 1.5;
@@ -6,149 +6,149 @@
   word-wrap: break-word;
 }
 
-.gitment-container * {
+.ecomment-container * {
   box-sizing: border-box;
 }
 
-.gitment-container *:disabled {
+.ecomment-container *:disabled {
   cursor: not-allowed;
 }
 
-.gitment-container a,
-.gitment-container a:visited {
+.ecomment-container a,
+.ecomment-container a:visited {
   cursor: pointer;
   text-decoration: none;
 }
 
-.gitment-container a:hover {
+.ecomment-container a:hover {
   text-decoration: underline;
 }
 
-.gitment-container .gitment-hidden {
+.ecomment-container .ecomment-hidden {
   display: none;
 }
 
-.gitment-container .gitment-spinner-icon {
+.ecomment-container .ecomment-spinner-icon {
   fill: #333;
 
-  -webkit-animation: gitment-spin 1s steps(12) infinite;
-  animation: gitment-spin 1s steps(12) infinite;
+  -webkit-animation: ecomment-spin 1s steps(12) infinite;
+  animation: ecomment-spin 1s steps(12) infinite;
 }
 
-@-webkit-keyframes gitment-spin {
+@-webkit-keyframes ecomment-spin {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg)
   }
 }
 
-@keyframes gitment-spin {
+@keyframes ecomment-spin {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg)
   }
 }
 
-.gitment-root-container {
+.ecomment-root-container {
   margin: 19px 0;
 }
 
-.gitment-header-container {
+.ecomment-header-container {
   margin: 19px 0;
 }
 
-.gitment-header-like-btn,
-.gitment-comment-like-btn {
+.ecomment-header-like-btn,
+.ecomment-comment-like-btn {
   cursor: pointer;
 }
 
-.gitment-comment-like-btn {
+.ecomment-comment-like-btn {
   float: right;
 }
 
-.gitment-comment-like-btn.liked {
+.ecomment-comment-like-btn.liked {
   color: #F44336;
 }
 
-.gitment-header-like-btn svg {
+.ecomment-header-like-btn svg {
   vertical-align: middle;
   height: 30px;
 }
 
-.gitment-comment-like-btn svg {
+.ecomment-comment-like-btn svg {
   vertical-align: middle;
   height: 20px;
 }
 
-.gitment-header-like-btn.liked svg,
-.gitment-comment-like-btn.liked svg {
+.ecomment-header-like-btn.liked svg,
+.ecomment-comment-like-btn.liked svg {
   fill: #F44336;
 }
 
-a.gitment-header-issue-link,
-a.gitment-header-issue-link:visited {
+a.ecomment-header-issue-link,
+a.ecomment-header-issue-link:visited {
   float: right;
   line-height: 30px;
   color: #666;
 }
 
-a.gitment-header-issue-link:hover {
+a.ecomment-header-issue-link:hover {
   color: #666;
 }
 
-.gitment-comments-loading,
-.gitment-comments-error,
-.gitment-comments-empty {
+.ecomment-comments-loading,
+.ecomment-comments-error,
+.ecomment-comments-empty {
   text-align: center;
   margin: 50px 0;
 }
 
-.gitment-comments-list {
+.ecomment-comments-list {
   list-style: none;
   padding-left: 0;
   margin: 0 0 38px;
 }
 
-.gitment-comment,
-.gitment-editor-container {
+.ecomment-comment,
+.ecomment-editor-container {
   position: relative;
   min-height: 60px;
   padding-left: 60px;
   margin: 19px 0;
 }
 
-.gitment-comment-avatar,
-.gitment-editor-avatar {
+.ecomment-comment-avatar,
+.ecomment-editor-avatar {
   float: left;
   margin-left: -60px;
 }
 
-.gitment-comment-avatar,
-.gitment-comment-avatar-img,
-.gitment-comment-avatar,
-.gitment-editor-avatar-img,
-.gitment-editor-avatar svg {
+.ecomment-comment-avatar,
+.ecomment-comment-avatar-img,
+.ecomment-comment-avatar,
+.ecomment-editor-avatar-img,
+.ecomment-editor-avatar svg {
   width: 44px;
   height: 44px;
   border-radius: 3px;
 }
 
-.gitment-editor-avatar .gitment-github-icon {
+.ecomment-editor-avatar .ecomment-github-icon {
   fill: #fff;
   background-color: #333;
 }
 
-.gitment-comment-main,
-.gitment-editor-main {
+.ecomment-comment-main,
+.ecomment-editor-main {
   position: relative;
   border: 1px solid #CFD8DC;
   border-radius: 0;
 }
 
-.gitment-editor-main::before,
-.gitment-editor-main::after,
-.gitment-comment-main::before,
-.gitment-comment-main::after {
+.ecomment-editor-main::before,
+.ecomment-editor-main::after,
+.ecomment-comment-main::before,
+.ecomment-comment-main::after {
   position: absolute;
   top: 11px;
   left: -16px;
@@ -161,45 +161,45 @@ a.gitment-header-issue-link:hover {
   border-style: solid solid outset;
 }
 
-.gitment-editor-main::before,
-.gitment-comment-main::before {
+.ecomment-editor-main::before,
+.ecomment-comment-main::before {
   border-width: 8px;
   border-right-color: #CFD8DC;
 }
 
-.gitment-editor-main::after,
-.gitment-comment-main::after {
+.ecomment-editor-main::after,
+.ecomment-comment-main::after {
   margin-top: 1px;
   margin-left: 2px;
   border-width: 7px;
   border-right-color: #fff;
 }
 
-.gitment-comment-header {
+.ecomment-comment-header {
   margin: 12px 15px;
   color: #666;
   background-color: #fff;
   border-radius: 3px;
 }
 
-.gitment-editor-header {
+.ecomment-editor-header {
   padding: 0;
   margin: 0;
   border-bottom: 1px solid #CFD8DC;
 }
 
-a.gitment-comment-name,
-a.gitment-comment-name:visited {
+a.ecomment-comment-name,
+a.ecomment-comment-name:visited {
   font-weight: 600;
   color: #666;
 }
 
-.gitment-editor-tabs {
+.ecomment-editor-tabs {
   margin-bottom: -1px;
   margin-left: -1px;
 }
 
-.gitment-editor-tab {
+.ecomment-editor-tab {
   display: inline-block;
   padding: 11px 12px;
   font-size: 14px;
@@ -219,47 +219,55 @@ a.gitment-comment-name:visited {
   outline: none;
 }
 
-.gitment-editor-tab.gitment-selected {
+.ecomment-editor-tab.ecomment-selected {
   color: #333;
   background-color: #fff;
   border-color: #CFD8DC;
 }
 
-.gitment-editor-login {
+.ecomment-editor-login {
   float: right;
   margin-top: -30px;
   margin-right: 15px;
 }
 
-a.gitment-footer-project-link,
-a.gitment-footer-project-link:visited,
-a.gitment-editor-login-link,
-a.gitment-editor-login-link:visited {
+a.ecomment-footer-project-link,
+a.ecomment-footer-project-link:visited,
+a.ecomment-editor-login-link,
+a.ecomment-editor-login-link:visited {
   color: #2196F3;
 }
 
-a.gitment-editor-logout-link,
-a.gitment-editor-logout-link:visited {
+a.ecomment-editor-logout-link,
+a.ecomment-editor-logout-link:visited {
   color: #666;
 }
 
-a.gitment-editor-logout-link:hover {
+a.ecomment-editor-logout-link:hover {
   color: #2196F3;
   text-decoration: none;
 }
 
-.gitment-comment-body {
+.ecomment-comment-body {
   position: relative;
   margin: 12px 15px;
   overflow: hidden;
   border-radius: 3px;
 }
 
-.gitment-comment-body-folded {
+.ecomment-comment-body g-emoji {
+  font-family: "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.ecomment-comment-body-folded {
   cursor: pointer;
 }
 
-.gitment-comment-body-folded::before {
+.ecomment-comment-body-folded::before {
   display: block !important;
   content: "";
   position: absolute;
@@ -272,7 +280,7 @@ a.gitment-editor-logout-link:hover {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .9));
 }
 
-.gitment-comment-body-folded::after {
+.ecomment-comment-body-folded::after {
   display: block !important;
   content: "Click to Expand" !important;
   text-align: center;
@@ -287,21 +295,21 @@ a.gitment-editor-logout-link:hover {
   background: rgba(255, 255, 255, .9);
 }
 
-.gitment-editor-body {
+.ecomment-editor-body {
   margin: 0;
 }
 
-.gitment-comment-body > *:first-child,
-.gitment-editor-preview > *:first-child {
+.ecomment-comment-body > *:first-child,
+.ecomment-editor-preview > *:first-child {
   margin-top: 0 !important;
 }
 
-.gitment-comment-body > *:last-child,
-.gitment-editor-preview > *:last-child {
+.ecomment-comment-body > *:last-child,
+.ecomment-editor-preview > *:last-child {
   margin-bottom: 0 !important;
 }
 
-.gitment-editor-body textarea {
+.ecomment-editor-body textarea {
   display: block;
   width: 100%;
   min-height: 150px;
@@ -326,11 +334,11 @@ a.gitment-editor-logout-link:hover {
   overflow: visible;
 }
 
-.gitment-editor-body textarea:focus {
+.ecomment-editor-body textarea:focus {
   background-color: #fff;
 }
 
-.gitment-editor-preview {
+.ecomment-editor-preview {
   min-height: 150px;
 
   padding: 16px;
@@ -343,37 +351,37 @@ a.gitment-editor-logout-link:hover {
   word-wrap: break-word;
 }
 
-.gitment-editor-footer {
+.ecomment-editor-footer {
   padding: 0;
   margin-top: 10px;
 }
 
-.gitment-editor-footer::after {
+.ecomment-editor-footer::after {
   display: table;
   clear: both;
   content: "";
 }
 
-a.gitment-editor-footer-tip {
+a.ecomment-editor-footer-tip {
   display: inline-block;
   padding-top: 10px;
   font-size: 12px;
   color: #666;
 }
 
-a.gitment-editor-footer-tip:hover {
+a.ecomment-editor-footer-tip:hover {
   color: #2196F3;
   text-decoration: none;
 }
 
-.gitment-comments-pagination {
+.ecomment-comments-pagination {
   list-style: none;
   text-align: right;
   border-radius: 0;
   margin: -19px 0 19px 0;
 }
 
-.gitment-comments-page-item {
+.ecomment-comments-page-item {
   display: inline-block;
   cursor: pointer;
   border: 1px solid #CFD8DC;
@@ -381,18 +389,18 @@ a.gitment-editor-footer-tip:hover {
   padding: .25rem .5rem;
 }
 
-.gitment-comments-page-item:hover {
+.ecomment-comments-page-item:hover {
   background-color: #f5f5f5;
 }
 
-.gitment-comments-page-item.gitment-selected {
+.ecomment-comments-page-item.ecomment-selected {
   background-color: #f5f5f5;
 }
 
-.gitment-editor-submit,
-.gitment-comments-init-btn {
+.ecomment-editor-submit,
+.ecomment-comments-init-btn {
   color: #fff;
-  background-color: #00BCD4;
+  background-color: #0088f5;
 
   position: relative;
   display: inline-block;
@@ -414,23 +422,23 @@ a.gitment-editor-footer-tip:hover {
   appearance: none;
 }
 
-.gitment-editor-submit:hover,
-.gitment-comments-init-btn:hover {
-  background-color: #00ACC1;
+.ecomment-editor-submit:hover,
+.ecomment-comments-init-btn:hover {
+  background-color: #0373ce;
 }
 
-.gitment-comments-init-btn:disabled,
-.gitment-editor-submit:disabled {
+.ecomment-comments-init-btn:disabled,
+.ecomment-editor-submit:disabled {
   color: rgba(255,255,255,0.75);
-  background-color: #4DD0E1;
+  background-color: #0088f5a1;
   box-shadow: none;
 }
 
-.gitment-editor-submit {
+.ecomment-editor-submit {
   float: right;
 }
 
-.gitment-footer-container {
+.ecomment-footer-container {
   margin-top: 30px;
   margin-bottom: 20px;
   text-align: right;
@@ -441,7 +449,7 @@ a.gitment-editor-footer-tip:hover {
  * Markdown CSS
  * Copied from https://github.com/sindresorhus/github-markdown-css
  */
-.gitment-markdown {
+.ecomment-markdown {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
@@ -452,226 +460,226 @@ a.gitment-editor-footer-tip:hover {
   word-wrap: break-word;
 }
 
-.gitment-markdown .pl-c {
+.ecomment-markdown .pl-c {
   color: #969896;
 }
 
-.gitment-markdown .pl-c1,
-.gitment-markdown .pl-s .pl-v {
+.ecomment-markdown .pl-c1,
+.ecomment-markdown .pl-s .pl-v {
   color: #0086b3;
 }
 
-.gitment-markdown .pl-e,
-.gitment-markdown .pl-en {
+.ecomment-markdown .pl-e,
+.ecomment-markdown .pl-en {
   color: #795da3;
 }
 
-.gitment-markdown .pl-smi,
-.gitment-markdown .pl-s .pl-s1 {
+.ecomment-markdown .pl-smi,
+.ecomment-markdown .pl-s .pl-s1 {
   color: #333;
 }
 
-.gitment-markdown .pl-ent {
+.ecomment-markdown .pl-ent {
   color: #63a35c;
 }
 
-.gitment-markdown .pl-k {
+.ecomment-markdown .pl-k {
   color: #a71d5d;
 }
 
-.gitment-markdown .pl-s,
-.gitment-markdown .pl-pds,
-.gitment-markdown .pl-s .pl-pse .pl-s1,
-.gitment-markdown .pl-sr,
-.gitment-markdown .pl-sr .pl-cce,
-.gitment-markdown .pl-sr .pl-sre,
-.gitment-markdown .pl-sr .pl-sra {
+.ecomment-markdown .pl-s,
+.ecomment-markdown .pl-pds,
+.ecomment-markdown .pl-s .pl-pse .pl-s1,
+.ecomment-markdown .pl-sr,
+.ecomment-markdown .pl-sr .pl-cce,
+.ecomment-markdown .pl-sr .pl-sre,
+.ecomment-markdown .pl-sr .pl-sra {
   color: #183691;
 }
 
-.gitment-markdown .pl-v,
-.gitment-markdown .pl-smw {
+.ecomment-markdown .pl-v,
+.ecomment-markdown .pl-smw {
   color: #ed6a43;
 }
 
-.gitment-markdown .pl-bu {
+.ecomment-markdown .pl-bu {
   color: #b52a1d;
 }
 
-.gitment-markdown .pl-ii {
+.ecomment-markdown .pl-ii {
   color: #f8f8f8;
   background-color: #b52a1d;
 }
 
-.gitment-markdown .pl-c2 {
+.ecomment-markdown .pl-c2 {
   color: #f8f8f8;
   background-color: #b52a1d;
 }
 
-.gitment-markdown .pl-c2::before {
+.ecomment-markdown .pl-c2::before {
   content: "^M";
 }
 
-.gitment-markdown .pl-sr .pl-cce {
+.ecomment-markdown .pl-sr .pl-cce {
   font-weight: bold;
   color: #63a35c;
 }
 
-.gitment-markdown .pl-ml {
+.ecomment-markdown .pl-ml {
   color: #693a17;
 }
 
-.gitment-markdown .pl-mh,
-.gitment-markdown .pl-mh .pl-en,
-.gitment-markdown .pl-ms {
+.ecomment-markdown .pl-mh,
+.ecomment-markdown .pl-mh .pl-en,
+.ecomment-markdown .pl-ms {
   font-weight: bold;
   color: #1d3e81;
 }
 
-.gitment-markdown .pl-mq {
+.ecomment-markdown .pl-mq {
   color: #008080;
 }
 
-.gitment-markdown .pl-mi {
+.ecomment-markdown .pl-mi {
   font-style: italic;
   color: #333;
 }
 
-.gitment-markdown .pl-mb {
+.ecomment-markdown .pl-mb {
   font-weight: bold;
   color: #333;
 }
 
-.gitment-markdown .pl-md {
+.ecomment-markdown .pl-md {
   color: #bd2c00;
   background-color: #ffecec;
 }
 
-.gitment-markdown .pl-mi1 {
+.ecomment-markdown .pl-mi1 {
   color: #55a532;
   background-color: #eaffea;
 }
 
-.gitment-markdown .pl-mc {
+.ecomment-markdown .pl-mc {
   color: #ef9700;
   background-color: #ffe3b4;
 }
 
-.gitment-markdown .pl-mi2 {
+.ecomment-markdown .pl-mi2 {
   color: #d8d8d8;
   background-color: #808080;
 }
 
-.gitment-markdown .pl-mdr {
+.ecomment-markdown .pl-mdr {
   font-weight: bold;
   color: #795da3;
 }
 
-.gitment-markdown .pl-mo {
+.ecomment-markdown .pl-mo {
   color: #1d3e81;
 }
 
-.gitment-markdown .pl-ba {
+.ecomment-markdown .pl-ba {
   color: #595e62;
 }
 
-.gitment-markdown .pl-sg {
+.ecomment-markdown .pl-sg {
   color: #c0c0c0;
 }
 
-.gitment-markdown .pl-corl {
+.ecomment-markdown .pl-corl {
   text-decoration: underline;
   color: #183691;
 }
 
-.gitment-markdown .octicon {
+.ecomment-markdown .octicon {
   display: inline-block;
   vertical-align: text-top;
   fill: currentColor;
 }
 
-.gitment-markdown a {
+.ecomment-markdown a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 
-.gitment-markdown a:active,
-.gitment-markdown a:hover {
+.ecomment-markdown a:active,
+.ecomment-markdown a:hover {
   outline-width: 0;
 }
 
-.gitment-markdown strong {
+.ecomment-markdown strong {
   font-weight: inherit;
 }
 
-.gitment-markdown strong {
+.ecomment-markdown strong {
   font-weight: bolder;
 }
 
-.gitment-markdown h1 {
+.ecomment-markdown h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
-.gitment-markdown img {
+.ecomment-markdown img {
   border-style: none;
 }
 
-.gitment-markdown svg:not(:root) {
+.ecomment-markdown svg:not(:root) {
   overflow: hidden;
 }
 
-.gitment-markdown code,
-.gitment-markdown kbd,
-.gitment-markdown pre {
+.ecomment-markdown code,
+.ecomment-markdown kbd,
+.ecomment-markdown pre {
   font-family: monospace, monospace;
   font-size: 1em;
 }
 
-.gitment-markdown hr {
+.ecomment-markdown hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
 }
 
-.gitment-markdown input {
+.ecomment-markdown input {
   font: inherit;
   margin: 0;
 }
 
-.gitment-markdown input {
+.ecomment-markdown input {
   overflow: visible;
 }
 
-.gitment-markdown [type="checkbox"] {
+.ecomment-markdown [type="checkbox"] {
   box-sizing: border-box;
   padding: 0;
 }
 
-.gitment-markdown * {
+.ecomment-markdown * {
   box-sizing: border-box;
 }
 
-.gitment-markdown input {
+.ecomment-markdown input {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
 
-.gitment-markdown a {
+.ecomment-markdown a {
   color: #0366d6;
   text-decoration: none;
 }
 
-.gitment-markdown a:hover {
+.ecomment-markdown a:hover {
   text-decoration: underline;
 }
 
-.gitment-markdown strong {
+.ecomment-markdown strong {
   font-weight: 600;
 }
 
-.gitment-markdown hr {
+.ecomment-markdown hr {
   height: 0;
   margin: 15px 0;
   overflow: hidden;
@@ -680,189 +688,189 @@ a.gitment-editor-footer-tip:hover {
   border-bottom: 1px solid #dfe2e5;
 }
 
-.gitment-markdown hr::before {
+.ecomment-markdown hr::before {
   display: table;
   content: "";
 }
 
-.gitment-markdown hr::after {
+.ecomment-markdown hr::after {
   display: table;
   clear: both;
   content: "";
 }
 
-.gitment-markdown table {
+.ecomment-markdown table {
   border-spacing: 0;
   border-collapse: collapse;
 }
 
-.gitment-markdown td,
-.gitment-markdown th {
+.ecomment-markdown td,
+.ecomment-markdown th {
   padding: 0;
 }
 
-.gitment-markdown h1,
-.gitment-markdown h2,
-.gitment-markdown h3,
-.gitment-markdown h4,
-.gitment-markdown h5,
-.gitment-markdown h6 {
+.ecomment-markdown h1,
+.ecomment-markdown h2,
+.ecomment-markdown h3,
+.ecomment-markdown h4,
+.ecomment-markdown h5,
+.ecomment-markdown h6 {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.gitment-markdown h1 {
+.ecomment-markdown h1 {
   font-size: 32px;
   font-weight: 600;
 }
 
-.gitment-markdown h2 {
+.ecomment-markdown h2 {
   font-size: 24px;
   font-weight: 600;
 }
 
-.gitment-markdown h3 {
+.ecomment-markdown h3 {
   font-size: 20px;
   font-weight: 600;
 }
 
-.gitment-markdown h4 {
+.ecomment-markdown h4 {
   font-size: 16px;
   font-weight: 600;
 }
 
-.gitment-markdown h5 {
+.ecomment-markdown h5 {
   font-size: 14px;
   font-weight: 600;
 }
 
-.gitment-markdown h6 {
+.ecomment-markdown h6 {
   font-size: 12px;
   font-weight: 600;
 }
 
-.gitment-markdown p {
+.ecomment-markdown p {
   margin-top: 0;
   margin-bottom: 10px;
 }
 
-.gitment-markdown blockquote {
+.ecomment-markdown blockquote {
   margin: 0;
 }
 
-.gitment-markdown ul,
-.gitment-markdown ol {
+.ecomment-markdown ul,
+.ecomment-markdown ol {
   padding-left: 0;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.gitment-markdown ol ol,
-.gitment-markdown ul ol {
+.ecomment-markdown ol ol,
+.ecomment-markdown ul ol {
   list-style-type: lower-roman;
 }
 
-.gitment-markdown ul ul ol,
-.gitment-markdown ul ol ol,
-.gitment-markdown ol ul ol,
-.gitment-markdown ol ol ol {
+.ecomment-markdown ul ul ol,
+.ecomment-markdown ul ol ol,
+.ecomment-markdown ol ul ol,
+.ecomment-markdown ol ol ol {
   list-style-type: lower-alpha;
 }
 
-.gitment-markdown dd {
+.ecomment-markdown dd {
   margin-left: 0;
 }
 
-.gitment-markdown code {
+.ecomment-markdown code {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 12px;
 }
 
-.gitment-markdown pre {
+.ecomment-markdown pre {
   margin-top: 0;
   margin-bottom: 0;
   font: 12px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
-.gitment-markdown .octicon {
+.ecomment-markdown .octicon {
   vertical-align: text-bottom;
 }
 
-.gitment-markdown .pl-0 {
+.ecomment-markdown .pl-0 {
   padding-left: 0 !important;
 }
 
-.gitment-markdown .pl-1 {
+.ecomment-markdown .pl-1 {
   padding-left: 4px !important;
 }
 
-.gitment-markdown .pl-2 {
+.ecomment-markdown .pl-2 {
   padding-left: 8px !important;
 }
 
-.gitment-markdown .pl-3 {
+.ecomment-markdown .pl-3 {
   padding-left: 16px !important;
 }
 
-.gitment-markdown .pl-4 {
+.ecomment-markdown .pl-4 {
   padding-left: 24px !important;
 }
 
-.gitment-markdown .pl-5 {
+.ecomment-markdown .pl-5 {
   padding-left: 32px !important;
 }
 
-.gitment-markdown .pl-6 {
+.ecomment-markdown .pl-6 {
   padding-left: 40px !important;
 }
 
-.gitment-markdown::before {
+.ecomment-markdown::before {
   display: table;
   content: "";
 }
 
-.gitment-markdown::after {
+.ecomment-markdown::after {
   display: table;
   clear: both;
   content: "";
 }
 
-.gitment-markdown>*:first-child {
+.ecomment-markdown>*:first-child {
   margin-top: 0 !important;
 }
 
-.gitment-markdown>*:last-child {
+.ecomment-markdown>*:last-child {
   margin-bottom: 0 !important;
 }
 
-.gitment-markdown a:not([href]) {
+.ecomment-markdown a:not([href]) {
   color: inherit;
   text-decoration: none;
 }
 
-.gitment-markdown .anchor {
+.ecomment-markdown .anchor {
   float: left;
   padding-right: 4px;
   margin-left: -20px;
   line-height: 1;
 }
 
-.gitment-markdown .anchor:focus {
+.ecomment-markdown .anchor:focus {
   outline: none;
 }
 
-.gitment-markdown p,
-.gitment-markdown blockquote,
-.gitment-markdown ul,
-.gitment-markdown ol,
-.gitment-markdown dl,
-.gitment-markdown table,
-.gitment-markdown pre {
+.ecomment-markdown p,
+.ecomment-markdown blockquote,
+.ecomment-markdown ul,
+.ecomment-markdown ol,
+.ecomment-markdown dl,
+.ecomment-markdown table,
+.ecomment-markdown pre {
   margin-top: 0;
   margin-bottom: 16px;
 }
 
-.gitment-markdown hr {
+.ecomment-markdown hr {
   height: 0.25em;
   padding: 0;
   margin: 24px 0;
@@ -870,21 +878,21 @@ a.gitment-editor-footer-tip:hover {
   border: 0;
 }
 
-.gitment-markdown blockquote {
+.ecomment-markdown blockquote {
   padding: 0 1em;
   color: #6a737d;
   border-left: 0.25em solid #dfe2e5;
 }
 
-.gitment-markdown blockquote>:first-child {
+.ecomment-markdown blockquote>:first-child {
   margin-top: 0;
 }
 
-.gitment-markdown blockquote>:last-child {
+.ecomment-markdown blockquote>:last-child {
   margin-bottom: 0;
 }
 
-.gitment-markdown kbd {
+.ecomment-markdown kbd {
   display: inline-block;
   padding: 3px 5px;
   font-size: 11px;
@@ -898,102 +906,102 @@ a.gitment-editor-footer-tip:hover {
   box-shadow: inset 0 -1px 0 #959da5;
 }
 
-.gitment-markdown h1,
-.gitment-markdown h2,
-.gitment-markdown h3,
-.gitment-markdown h4,
-.gitment-markdown h5,
-.gitment-markdown h6 {
+.ecomment-markdown h1,
+.ecomment-markdown h2,
+.ecomment-markdown h3,
+.ecomment-markdown h4,
+.ecomment-markdown h5,
+.ecomment-markdown h6 {
   margin-top: 24px;
   margin-bottom: 16px;
   font-weight: 600;
   line-height: 1.25;
 }
 
-.gitment-markdown h1 .octicon-link,
-.gitment-markdown h2 .octicon-link,
-.gitment-markdown h3 .octicon-link,
-.gitment-markdown h4 .octicon-link,
-.gitment-markdown h5 .octicon-link,
-.gitment-markdown h6 .octicon-link {
+.ecomment-markdown h1 .octicon-link,
+.ecomment-markdown h2 .octicon-link,
+.ecomment-markdown h3 .octicon-link,
+.ecomment-markdown h4 .octicon-link,
+.ecomment-markdown h5 .octicon-link,
+.ecomment-markdown h6 .octicon-link {
   color: #1b1f23;
   vertical-align: middle;
   visibility: hidden;
 }
 
-.gitment-markdown h1:hover .anchor,
-.gitment-markdown h2:hover .anchor,
-.gitment-markdown h3:hover .anchor,
-.gitment-markdown h4:hover .anchor,
-.gitment-markdown h5:hover .anchor,
-.gitment-markdown h6:hover .anchor {
+.ecomment-markdown h1:hover .anchor,
+.ecomment-markdown h2:hover .anchor,
+.ecomment-markdown h3:hover .anchor,
+.ecomment-markdown h4:hover .anchor,
+.ecomment-markdown h5:hover .anchor,
+.ecomment-markdown h6:hover .anchor {
   text-decoration: none;
 }
 
-.gitment-markdown h1:hover .anchor .octicon-link,
-.gitment-markdown h2:hover .anchor .octicon-link,
-.gitment-markdown h3:hover .anchor .octicon-link,
-.gitment-markdown h4:hover .anchor .octicon-link,
-.gitment-markdown h5:hover .anchor .octicon-link,
-.gitment-markdown h6:hover .anchor .octicon-link {
+.ecomment-markdown h1:hover .anchor .octicon-link,
+.ecomment-markdown h2:hover .anchor .octicon-link,
+.ecomment-markdown h3:hover .anchor .octicon-link,
+.ecomment-markdown h4:hover .anchor .octicon-link,
+.ecomment-markdown h5:hover .anchor .octicon-link,
+.ecomment-markdown h6:hover .anchor .octicon-link {
   visibility: visible;
 }
 
-.gitment-markdown h1 {
+.ecomment-markdown h1 {
   padding-bottom: 0.3em;
   font-size: 2em;
   border-bottom: 1px solid #eaecef;
 }
 
-.gitment-markdown h2 {
+.ecomment-markdown h2 {
   padding-bottom: 0.3em;
   font-size: 1.5em;
   border-bottom: 1px solid #eaecef;
 }
 
-.gitment-markdown h3 {
+.ecomment-markdown h3 {
   font-size: 1.25em;
 }
 
-.gitment-markdown h4 {
+.ecomment-markdown h4 {
   font-size: 1em;
 }
 
-.gitment-markdown h5 {
+.ecomment-markdown h5 {
   font-size: 0.875em;
 }
 
-.gitment-markdown h6 {
+.ecomment-markdown h6 {
   font-size: 0.85em;
   color: #6a737d;
 }
 
-.gitment-markdown ul,
-.gitment-markdown ol {
+.ecomment-markdown ul,
+.ecomment-markdown ol {
   padding-left: 2em;
 }
 
-.gitment-markdown ul ul,
-.gitment-markdown ul ol,
-.gitment-markdown ol ol,
-.gitment-markdown ol ul {
+.ecomment-markdown ul ul,
+.ecomment-markdown ul ol,
+.ecomment-markdown ol ol,
+.ecomment-markdown ol ul {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.gitment-markdown li>p {
+.ecomment-markdown li>p {
   margin-top: 16px;
 }
 
-.gitment-markdown li+li {
+.ecomment-markdown li+li {
   margin-top: 0.25em;
 }
 
-.gitment-markdown dl {
+.ecomment-markdown dl {
   padding: 0;
 }
 
-.gitment-markdown dl dt {
+.ecomment-markdown dl dt {
   padding: 0;
   margin-top: 16px;
   font-size: 1em;
@@ -1001,43 +1009,43 @@ a.gitment-editor-footer-tip:hover {
   font-weight: 600;
 }
 
-.gitment-markdown dl dd {
+.ecomment-markdown dl dd {
   padding: 0 16px;
   margin-bottom: 16px;
 }
 
-.gitment-markdown table {
+.ecomment-markdown table {
   display: block;
   width: 100%;
   overflow: auto;
 }
 
-.gitment-markdown table th {
+.ecomment-markdown table th {
   font-weight: 600;
 }
 
-.gitment-markdown table th,
-.gitment-markdown table td {
+.ecomment-markdown table th,
+.ecomment-markdown table td {
   padding: 6px 13px;
   border: 1px solid #dfe2e5;
 }
 
-.gitment-markdown table tr {
+.ecomment-markdown table tr {
   background-color: #fff;
   border-top: 1px solid #c6cbd1;
 }
 
-.gitment-markdown table tr:nth-child(2n) {
+.ecomment-markdown table tr:nth-child(2n) {
   background-color: #f5f5f5;
 }
 
-.gitment-markdown img {
+.ecomment-markdown img {
   max-width: 100%;
   box-sizing: content-box;
   background-color: #fff;
 }
 
-.gitment-markdown code {
+.ecomment-markdown code {
   padding: 0;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
@@ -1047,17 +1055,17 @@ a.gitment-editor-footer-tip:hover {
   border-radius: 0;
 }
 
-.gitment-markdown code::before,
-.gitment-markdown code::after {
+.ecomment-markdown code::before,
+.ecomment-markdown code::after {
   letter-spacing: -0.2em;
   content: "\00a0";
 }
 
-.gitment-markdown pre {
+.ecomment-markdown pre {
   word-wrap: normal;
 }
 
-.gitment-markdown pre>code {
+.ecomment-markdown pre>code {
   padding: 0;
   margin: 0;
   font-size: 100%;
@@ -1067,17 +1075,17 @@ a.gitment-editor-footer-tip:hover {
   border: 0;
 }
 
-.gitment-markdown .highlight {
+.ecomment-markdown .highlight {
   margin-bottom: 16px;
 }
 
-.gitment-markdown .highlight pre {
+.ecomment-markdown .highlight pre {
   margin-bottom: 0;
   word-break: normal;
 }
 
-.gitment-markdown .highlight pre,
-.gitment-markdown pre {
+.ecomment-markdown .highlight pre,
+.ecomment-markdown pre {
   padding: 16px;
   overflow: auto;
   font-size: 85%;
@@ -1086,7 +1094,7 @@ a.gitment-editor-footer-tip:hover {
   border-radius: 0;
 }
 
-.gitment-markdown pre code {
+.ecomment-markdown pre code {
   display: inline;
   max-width: auto;
   padding: 0;
@@ -1098,17 +1106,17 @@ a.gitment-editor-footer-tip:hover {
   border: 0;
 }
 
-.gitment-markdown pre code::before,
-.gitment-markdown pre code::after {
+.ecomment-markdown pre code::before,
+.ecomment-markdown pre code::after {
   content: normal;
 }
 
-.gitment-markdown .full-commit .btn-outline:not(:disabled):hover {
+.ecomment-markdown .full-commit .btn-outline:not(:disabled):hover {
   color: #005cc5;
   border-color: #005cc5;
 }
 
-.gitment-markdown kbd {
+.ecomment-markdown kbd {
   display: inline-block;
   padding: 3px 5px;
   font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
@@ -1122,25 +1130,25 @@ a.gitment-editor-footer-tip:hover {
   box-shadow: inset 0 -1px 0 #959da5;
 }
 
-.gitment-markdown :checked+.radio-label {
+.ecomment-markdown :checked+.radio-label {
   position: relative;
   z-index: 1;
   border-color: #0366d6;
 }
 
-.gitment-markdown .task-list-item {
+.ecomment-markdown .task-list-item {
   list-style-type: none;
 }
 
-.gitment-markdown .task-list-item+.task-list-item {
+.ecomment-markdown .task-list-item+.task-list-item {
   margin-top: 3px;
 }
 
-.gitment-markdown .task-list-item input {
+.ecomment-markdown .task-list-item input {
   margin: 0 0.2em 0.25em -1.6em;
   vertical-align: middle;
 }
 
-.gitment-markdown hr {
+.ecomment-markdown hr {
   border-bottom-color: #eee;
 }

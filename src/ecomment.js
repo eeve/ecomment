@@ -4,8 +4,6 @@ import { LS_ACCESS_TOKEN_KEY, LS_USER_KEY, NOT_INITIALIZED_ERROR } from './const
 import { getTargetContainer, http, Query } from './utils'
 import defaultTheme from './theme/default'
 
-const scope = 'public_repo'
-
 function extendRenderer(instance, renderer) {
   instance[renderer] = (container) => {
     const targetContainer = getTargetContainer(container)
@@ -24,7 +22,7 @@ function extendRenderer(instance, renderer) {
   }
 }
 
-class Gitment {
+class Comment {
   get accessToken() {
     return localStorage.getItem(LS_ACCESS_TOKEN_KEY)
   }
@@ -33,15 +31,8 @@ class Gitment {
   }
 
   get loginLink() {
-    const oauthUri = 'https://github.com/login/oauth/authorize'
     const redirect_uri = this.oauth.redirect_uri || window.location.href
-
-    const oauthParams = Object.assign({
-      scope,
-      redirect_uri,
-    }, this.oauth)
-
-    return `${oauthUri}${Query.stringify(oauthParams)}`
+    return `${this.authorizeUrl}?callback=${redirect_uri}`
   }
 
   constructor(options = {}) {
@@ -56,8 +47,13 @@ class Gitment {
       labels: [],
       theme: defaultTheme,
       oauth: {},
+      authorizeUrl: 'https://proxy.oauth.eeve.me/api/oauth/authorize',
+      tokenUrl: 'https://proxy.oauth.eeve.me/api/oauth/token',
       perPage: 20,
       maxCommentHeight: 250,
+      formatIssues: () => {
+        return this
+      }
     }, options)
 
     this.useTheme(this.theme)
@@ -99,10 +95,8 @@ class Gitment {
       }, options)
 
       this.state.user.isLoggingIn = true
-      http.post('https://gh-oauth.imsun.net', {
-          code,
-          client_id,
-          client_secret,
+      http.post(this.tokenUrl, {
+          code
         }, '')
         .then(data => {
           this.accessToken = data.access_token
@@ -150,12 +144,12 @@ class Gitment {
   }
 
   createIssue() {
-    const { id, owner, repo, title, link, desc, labels } = this
+    const { id, owner, repo, title, link, desc, labels } = this.formatIssues(this)
 
     return http.post(`/repos/${owner}/${repo}/issues`, {
       title,
-      labels: labels.concat(['gitment', id]),
-      body: `${link}\n\n${desc}`,
+      labels: labels.concat([ id ]),
+      body: desc,
     })
       .then((meta) => {
         this.state.meta = meta
@@ -186,7 +180,7 @@ class Gitment {
     const { id, owner, repo } = this
     return http.get(`/repos/${owner}/${repo}/issues`, {
         creator: owner,
-        labels: id,
+        labels: id
       })
       .then(issues => {
         if (!issues.length) return Promise.reject(NOT_INITIALIZED_ERROR)
@@ -340,4 +334,4 @@ class Gitment {
   }
 }
 
-module.exports = Gitment
+module.exports = Comment
