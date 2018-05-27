@@ -9,10 +9,6 @@
 ecomment is a comment system based on GitHub Issues,
 which can be used in the frontend without any server-side implementation.
 
-[Demo Page](https://imsun.github.io/ecomment/)
-
-[中文简介](https://imsun.net/posts/ecomment-introduction/)
-
 - [Features](#features)
 - [Get Started](#get-started)
 - [Methods](#methods)
@@ -32,16 +28,6 @@ which can be used in the frontend without any server-side implementation.
 
 ### 1. Install
 
-```html
-<link rel="stylesheet" href="https://imsun.github.io/ecomment/style/default.css">
-```
-
-```html
-<script src="https://imsun.github.io/ecomment/dist/ecomment.browser.js"></script>
-```
-
-or via npm:
-
 ```sh
 $ npm i --save ecomment
 ```
@@ -55,7 +41,7 @@ import ecomment from 'ecomment'
 
 [Click here](https://github.com/settings/applications/new) to register an OAuth application, and you will get a client ID and a client secret.
 
-Make sure the callback URL is right. Generally it's the origin of your site, like [https://imsun.net](https://imsun.net).
+Make sure the callback URL is right. Generally it's the origin of your site, like [https://eeve.me](https://eeve.me).
 
 ### 3. Render ecomment
 
