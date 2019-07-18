@@ -29,12 +29,12 @@ which can be used in the frontend without any server-side implementation.
 ### 1. Install
 
 ```sh
-$ npm i --save ecomment
+$ npm i --save @eeve/github-comment
 ```
 
 ```javascript
-import 'ecomment/style/default.css'
-import ecomment from 'ecomment'
+import '@eeve/github-comment/style/default.css'
+import ecomment from '@eeve/github-comment'
 ```
 
 ### 2. Register An OAuth Application
