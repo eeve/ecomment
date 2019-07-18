@@ -1,4 +1,4 @@
-export const LS_ACCESS_TOKEN_KEY = 'gitment-comments-token'
-export const LS_USER_KEY = 'gitment-user-info'
+export const LS_ACCESS_TOKEN_KEY = 'ecomment-comments-token'
+export const LS_USER_KEY = 'ecomment-user-info'
 
-export const NOT_INITIALIZED_ERROR = new Error('Comments Not Initialized')
+export const NOT_INITIALIZED_ERROR = new Error('评论系统未初始化')

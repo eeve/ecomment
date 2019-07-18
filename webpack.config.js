@@ -1,22 +1,30 @@
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
+  mode: 'production',
+  devtool: false,
   context: path.join(__dirname, 'src'),
-  entry: './gitment.js',
+  entry: './ecomment.js',
   devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'gitment.browser.js',
-    libraryTarget: 'var',
-    library: 'Gitment',
+    filename: 'ecomment.browser.js',
+    libraryTarget: 'umd',
+    library: 'ecomment'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        exclude: /^node_mocules/,
-        loaders: ['babel-loader'],
-      },
-    ],
+        exclude: /^node_modules/,
+        use: 'babel-loader'
+      }
+    ]
   },
+  plugins: [
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    })
+  ]
 }

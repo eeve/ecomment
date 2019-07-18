@@ -2,6 +2,7 @@
 .idea
 .gitignore
 .npmignore
+.npmrc
 .babelrc
 
 node_modules

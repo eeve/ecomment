@@ -1,6 +1,8 @@
 const path = require('path')
 
 module.exports = {
+  mode: 'development',
+  devtool: '#cheap-module-source-map',
   context: path.join(__dirname, 'src'),
   entry: './test.js',
   devtool: 'source-map',
@@ -10,16 +12,16 @@ module.exports = {
     publicPath: '/dist/',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        exclude: /^node_mocules/,
-        loaders: ['babel-loader'],
-      },
-    ],
+        exclude: /^node_modules/,
+        use: 'babel-loader'
+      }
+    ]
   },
   devServer: {
     port: 3000,
     contentBase: './',
-  },
+  }
 }

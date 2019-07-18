@@ -1,26 +1,21 @@
 import { github as githubIcon, heart as heartIcon, spinner as spinnerIcon } from '../icons'
 import { NOT_INITIALIZED_ERROR } from '../constants'
+import timeago from 'timeago.js'
+
+const tai = timeago()
 
 function renderHeader({ meta, user, reactions }, instance) {
   const container = document.createElement('div')
-  container.lang = "en-US"
-  container.className = 'gitment-container gitment-header-container'
+  container.className = 'ecomment-container ecomment-header-container'
 
   const likeButton = document.createElement('span')
   const likedReaction = reactions.find(reaction => (
     reaction.content === 'heart' && reaction.user.login === user.login
   ))
-  likeButton.className = 'gitment-header-like-btn'
+  likeButton.className = 'ecomment-header-like-btn'
   likeButton.innerHTML = `
-    ${heartIcon}
-    ${ likedReaction
-      ? 'Unlike'
-      : 'Like'
-    }
-    ${ meta.reactions && meta.reactions.heart
-      ? ` • <strong>${meta.reactions.heart}</strong> Liked`
-      : ''
-    }
+    ${ heartIcon }
+    ${ likedReaction ? '取消' : '喜欢' }
   `
 
   if (likedReaction) {
@@ -33,39 +28,42 @@ function renderHeader({ meta, user, reactions }, instance) {
   container.appendChild(likeButton)
 
   const commentsCount = document.createElement('span')
-  commentsCount.innerHTML = `
-    ${ meta.comments
-    ? ` • <strong>${meta.comments}</strong> Comments`
+  commentsCount.innerHTML = `${ meta.reactions && meta.reactions.heart
+    ? ` • <strong>${meta.reactions.heart}</strong> 人喜欢`
     : ''
-    }
-  `
+  }`
   container.appendChild(commentsCount)
 
-  const issueLink = document.createElement('a')
-  issueLink.className = 'gitment-header-issue-link'
-  issueLink.href = meta.html_url
-  issueLink.target = '_blank'
-  issueLink.innerText = 'Issue Page'
-  container.appendChild(issueLink)
+  if (instance.state.error === null) {
+    const issueLink = document.createElement('a')
+    issueLink.className = 'ecomment-header-issue-link'
+    issueLink.href = meta.html_url
+    issueLink.target = '_blank'
+    // issueLink.innerText = 'Issue 页面'
+    issueLink.innerHTML = `${ meta.comments
+      ? `共 <strong>${meta.comments}</strong> 条评论`
+      : ''
+    }`
+    container.appendChild(issueLink)
+  }
 
   return container
 }
 
 function renderComments({ meta, comments, commentReactions, currentPage, user, error }, instance) {
   const container = document.createElement('div')
-  container.lang = "en-US"
-  container.className = 'gitment-container gitment-comments-container'
+  container.className = 'ecomment-container ecomment-comments-container'
 
   if (error) {
     const errorBlock = document.createElement('div')
-    errorBlock.className = 'gitment-comments-error'
+    errorBlock.className = 'ecomment-comments-error'
 
     if (error === NOT_INITIALIZED_ERROR
       && user.login
       && user.login.toLowerCase() === instance.owner.toLowerCase()) {
       const initHint = document.createElement('div')
       const initButton = document.createElement('button')
-      initButton.className = 'gitment-comments-init-btn'
+      initButton.className = 'ecomment-comments-init-btn'
       initButton.onclick = () => {
         initButton.setAttribute('disabled', true)
         instance.init()
@@ -74,7 +72,7 @@ function renderComments({ meta, comments, commentReactions, currentPage, user, e
             alert(e)
           })
       }
-      initButton.innerText = 'Initialize Comments'
+      initButton.innerText = '初始化评论系统'
       initHint.appendChild(initButton)
       errorBlock.appendChild(initHint)
     } else {
@@ -84,47 +82,47 @@ function renderComments({ meta, comments, commentReactions, currentPage, user, e
     return container
   } else if (comments === undefined) {
     const loading = document.createElement('div')
-    loading.innerText = 'Loading comments...'
-    loading.className = 'gitment-comments-loading'
+    loading.innerText = '加载评论...'
+    loading.className = 'ecomment-comments-loading'
     container.appendChild(loading)
     return container
   } else if (!comments.length) {
     const emptyBlock = document.createElement('div')
-    emptyBlock.className = 'gitment-comments-empty'
-    emptyBlock.innerText = 'No Comment Yet'
+    emptyBlock.className = 'ecomment-comments-empty'
+    emptyBlock.innerText = '尚无评论'
     container.appendChild(emptyBlock)
     return container
   }
 
   const commentsList = document.createElement('ul')
-  commentsList.className = 'gitment-comments-list'
+  commentsList.className = 'ecomment-comments-list'
 
   comments.forEach(comment => {
     const createDate = new Date(comment.created_at)
     const updateDate = new Date(comment.updated_at)
     const commentItem = document.createElement('li')
-    commentItem.className = 'gitment-comment'
+    commentItem.className = 'ecomment-comment'
     commentItem.innerHTML = `
-      <a class="gitment-comment-avatar" href="${comment.user.html_url}" target="_blank">
-        <img class="gitment-comment-avatar-img" src="${comment.user.avatar_url}"/>
+      <a class="ecomment-comment-avatar" href="${comment.user.html_url}" target="_blank">
+        <img class="ecomment-comment-avatar-img" src="${comment.user.avatar_url}"/>
       </a>
-      <div class="gitment-comment-main">
-        <div class="gitment-comment-header">
-          <a class="gitment-comment-name" href="${comment.user.html_url}" target="_blank">
+      <div class="ecomment-comment-main">
+        <div class="ecomment-comment-header">
+          <a class="ecomment-comment-name" href="${comment.user.html_url}" target="_blank">
             ${comment.user.login}
           </a>
-          commented on
-          <span title="${createDate}">${createDate.toDateString()}</span>
+          评论于
+          <span title="${createDate}">${tai.format(createDate, 'zh_CN')}</span>
           ${ createDate.toString() !== updateDate.toString()
-            ? ` • <span title="comment was edited at ${updateDate}">edited</span>`
+            ? ` • <span title="评论于 ${tai.format(updateDate, 'zh_CN')} 编辑过">编辑过</span>`
             : ''
           }
-          <div class="gitment-comment-like-btn">${heartIcon} ${comment.reactions.heart || ''}</div>
+          <div class="ecomment-comment-like-btn">${heartIcon} ${comment.reactions.heart || ''}</div>
         </div>
-        <div class="gitment-comment-body gitment-markdown">${comment.body_html}</div>
+        <div class="ecomment-comment-body ecomment-markdown">${comment.body_html}</div>
       </div>
     `
-    const likeButton = commentItem.querySelector('.gitment-comment-like-btn')
+    const likeButton = commentItem.querySelector('.ecomment-comment-like-btn')
     const likedReaction = commentReactions[comment.id]
       && commentReactions[comment.id].find(reaction => (
         reaction.content === 'heart' && reaction.user.login === user.login
@@ -140,16 +138,16 @@ function renderComments({ meta, comments, commentReactions, currentPage, user, e
     // dirty
     // use a blank image to trigger height calculating when element rendered
     const imgTrigger = document.createElement('img')
-    const markdownBody = commentItem.querySelector('.gitment-comment-body')
-    imgTrigger.className = 'gitment-hidden'
+    const markdownBody = commentItem.querySelector('.ecomment-comment-body')
+    imgTrigger.className = 'ecomment-hidden'
     imgTrigger.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
     imgTrigger.onload = () => {
       if (markdownBody.clientHeight > instance.maxCommentHeight) {
-        markdownBody.classList.add('gitment-comment-body-folded')
+        markdownBody.classList.add('ecomment-comment-body-folded')
         markdownBody.style.maxHeight = instance.maxCommentHeight + 'px'
         markdownBody.title = 'Click to Expand'
         markdownBody.onclick = () => {
-          markdownBody.classList.remove('gitment-comment-body-folded')
+          markdownBody.classList.remove('ecomment-comment-body-folded')
           markdownBody.style.maxHeight = ''
           markdownBody.title = ''
           markdownBody.onclick = null
@@ -167,11 +165,11 @@ function renderComments({ meta, comments, commentReactions, currentPage, user, e
     const pageCount = Math.ceil(meta.comments / instance.perPage)
     if (pageCount > 1) {
       const pagination = document.createElement('ul')
-      pagination.className = 'gitment-comments-pagination'
+      pagination.className = 'ecomment-comments-pagination'
 
       if (currentPage > 1) {
         const previousButton = document.createElement('li')
-        previousButton.className = 'gitment-comments-page-item'
+        previousButton.className = 'ecomment-comments-page-item'
         previousButton.innerText = 'Previous'
         previousButton.onclick = () => instance.goto(currentPage - 1)
         pagination.appendChild(previousButton)
@@ -179,16 +177,16 @@ function renderComments({ meta, comments, commentReactions, currentPage, user, e
 
       for (let i = 1; i <= pageCount; i++) {
         const pageItem = document.createElement('li')
-        pageItem.className = 'gitment-comments-page-item'
+        pageItem.className = 'ecomment-comments-page-item'
         pageItem.innerText = i
         pageItem.onclick = () => instance.goto(i)
-        if (currentPage === i) pageItem.classList.add('gitment-selected')
+        if (currentPage === i) pageItem.classList.add('ecomment-selected')
         pagination.appendChild(pageItem)
       }
 
       if (currentPage < pageCount) {
         const nextButton = document.createElement('li')
-        nextButton.className = 'gitment-comments-page-item'
+        nextButton.className = 'ecomment-comments-page-item'
         nextButton.innerText = 'Next'
         nextButton.onclick = () => instance.goto(currentPage + 1)
         pagination.appendChild(nextButton)
@@ -203,60 +201,59 @@ function renderComments({ meta, comments, commentReactions, currentPage, user, e
 
 function renderEditor({ user, error }, instance) {
   const container = document.createElement('div')
-  container.lang = "en-US"
-  container.className = 'gitment-container gitment-editor-container'
+  container.className = 'ecomment-container ecomment-editor-container'
 
   const shouldDisable = user.login && !error ? '' : 'disabled'
-  const disabledTip = user.login ? '' : 'Login to Comment'
+  const disabledTip = user.login ? '' : '登录后参与评论'
   container.innerHTML = `
       ${ user.login
-        ? `<a class="gitment-editor-avatar" href="${user.html_url}" target="_blank">
-            <img class="gitment-editor-avatar-img" src="${user.avatar_url}"/>
+        ? `<a class="ecomment-editor-avatar" href="${user.html_url}" target="_blank">
+            <img class="ecomment-editor-avatar-img" src="${user.avatar_url}"/>
           </a>`
         : user.isLoggingIn
-          ? `<div class="gitment-editor-avatar">${spinnerIcon}</div>`
-          : `<a class="gitment-editor-avatar" href="${instance.loginLink}" title="login with GitHub">
+          ? `<div class="ecomment-editor-avatar">${spinnerIcon}</div>`
+          : `<a class="ecomment-editor-avatar" href="${instance.loginLink}" title="login with GitHub">
               ${githubIcon}
             </a>`
       }
     </a>
-    <div class="gitment-editor-main">
-      <div class="gitment-editor-header">
-        <nav class="gitment-editor-tabs">
-          <button class="gitment-editor-tab gitment-selected">Write</button>
-          <button class="gitment-editor-tab">Preview</button>
+    <div class="ecomment-editor-main">
+      <div class="ecomment-editor-header">
+        <nav class="ecomment-editor-tabs">
+          <button class="ecomment-editor-tab ecomment-selected">写评论</button>
+          <button class="ecomment-editor-tab">预览</button>
         </nav>
-        <div class="gitment-editor-login">
+        <div class="ecomment-editor-login">
           ${ user.login
-            ? '<a class="gitment-editor-logout-link">Logout</a>'
+            ? '<a class="ecomment-editor-logout-link">登出</a>'
             : user.isLoggingIn
-              ? 'Logging in...'
-              : `<a class="gitment-editor-login-link" href="${instance.loginLink}">Login</a> with GitHub`
+              ? '登录中...'
+              : `用 GitHub <a class="ecomment-editor-login-link" href="${instance.loginLink}">登录</a>`
           }
         </div>
       </div>
-      <div class="gitment-editor-body">
-        <div class="gitment-editor-write-field">
-          <textarea placeholder="Leave a comment" title="${disabledTip}" ${shouldDisable}></textarea>
+      <div class="ecomment-editor-body">
+        <div class="ecomment-editor-write-field">
+          <textarea placeholder="发表您的见解" required title="${disabledTip}" ${shouldDisable}></textarea>
         </div>
-        <div class="gitment-editor-preview-field gitment-hidden">
-          <div class="gitment-editor-preview gitment-markdown"></div>
+        <div class="ecomment-editor-preview-field ecomment-hidden">
+          <div class="ecomment-editor-preview ecomment-markdown"></div>
         </div>
       </div>
     </div>
-    <div class="gitment-editor-footer">
-      <a class="gitment-editor-footer-tip" href="https://guides.github.com/features/mastering-markdown/" target="_blank">
-        Styling with Markdown is supported
+    <div class="ecomment-editor-footer">
+      <a class="ecomment-editor-footer-tip" href="https://guides.github.com/features/mastering-markdown/" target="_blank">
+        支持使用Markdown
       </a>
-      <button class="gitment-editor-submit" title="${disabledTip}" ${shouldDisable}>Comment</button>
+      <button class="ecomment-editor-submit" title="${disabledTip}" ${shouldDisable}>提交评论</button>
     </div>
   `
   if (user.login) {
-    container.querySelector('.gitment-editor-logout-link').onclick = () => instance.logout()
+    container.querySelector('.ecomment-editor-logout-link').onclick = () => instance.logout()
   }
 
-  const writeField = container.querySelector('.gitment-editor-write-field')
-  const previewField = container.querySelector('.gitment-editor-preview-field')
+  const writeField = container.querySelector('.ecomment-editor-write-field')
+  const previewField = container.querySelector('.ecomment-editor-preview-field')
 
   const textarea = writeField.querySelector('textarea')
   textarea.oninput = () => {
@@ -270,76 +267,66 @@ function renderEditor({ user, error }, instance) {
     }
   }
 
-  const [writeTab, previewTab] = container.querySelectorAll('.gitment-editor-tab')
+  const [writeTab, previewTab] = container.querySelectorAll('.ecomment-editor-tab')
   writeTab.onclick = () => {
-    writeTab.classList.add('gitment-selected')
-    previewTab.classList.remove('gitment-selected')
-    writeField.classList.remove('gitment-hidden')
-    previewField.classList.add('gitment-hidden')
+    writeTab.classList.add('ecomment-selected')
+    previewTab.classList.remove('ecomment-selected')
+    writeField.classList.remove('ecomment-hidden')
+    previewField.classList.add('ecomment-hidden')
 
     textarea.focus()
   }
   previewTab.onclick = () => {
-    previewTab.classList.add('gitment-selected')
-    writeTab.classList.remove('gitment-selected')
-    previewField.classList.remove('gitment-hidden')
-    writeField.classList.add('gitment-hidden')
+    previewTab.classList.add('ecomment-selected')
+    writeTab.classList.remove('ecomment-selected')
+    previewField.classList.remove('ecomment-hidden')
+    writeField.classList.add('ecomment-hidden')
 
-    const preview = previewField.querySelector('.gitment-editor-preview')
+    const preview = previewField.querySelector('.ecomment-editor-preview')
     const content = textarea.value.trim()
     if (!content) {
-      preview.innerText = 'Nothing to preview'
+      preview.innerText = ''
       return
     }
 
-    preview.innerText = 'Loading preview...'
+    preview.innerText = '载入中...'
     instance.markdown(content)
       .then(html => preview.innerHTML = html)
   }
 
-  const submitButton = container.querySelector('.gitment-editor-submit')
+  const submitButton = container.querySelector('.ecomment-editor-submit')
   submitButton.onclick = () => {
-    submitButton.innerText = 'Submitting...'
+    const text = textarea.value.trim()
+    if (text === '') {
+      return
+    }
+
+    submitButton.innerText = '提交中...'
     submitButton.setAttribute('disabled', true)
-    instance.post(textarea.value.trim())
+    instance.post(text)
       .then(data => {
         textarea.value = ''
         textarea.style.height = 'auto'
         submitButton.removeAttribute('disabled')
-        submitButton.innerText = 'Comment'
+        submitButton.innerText = '提交评论'
       })
       .catch(e => {
         alert(e)
         submitButton.removeAttribute('disabled')
-        submitButton.innerText = 'Comment'
+        submitButton.innerText = '提交评论'
       })
   }
 
-  return container
-}
-
-function renderFooter() {
-  const container = document.createElement('div')
-  container.lang = "en-US"
-  container.className = 'gitment-container gitment-footer-container'
-  container.innerHTML = `
-    Powered by
-    <a class="gitment-footer-project-link" href="https://github.com/imsun/gitment" target="_blank">
-      Gitment
-    </a>
-  `
   return container
 }
 
 function render(state, instance) {
   const container = document.createElement('div')
-  container.lang = "en-US"
-  container.className = 'gitment-container gitment-root-container'
+  container.className = 'ecomment-container ecomment-root-container'
   container.appendChild(instance.renderHeader(state, instance))
   container.appendChild(instance.renderComments(state, instance))
   container.appendChild(instance.renderEditor(state, instance))
-  container.appendChild(instance.renderFooter(state, instance))
   return container
 }
 
-export default { render, renderHeader, renderComments, renderEditor, renderFooter }
+export default { render, renderHeader, renderComments, renderEditor }
