@@ -95,17 +95,9 @@ class Comment {
       }, options)
 
       this.state.user.isLoggingIn = true
-<<<<<<< HEAD:src/gitment.js
-      http.post('https://gh-oauth.imsun.net', {
-          code,
-          client_id,
-          client_secret,
-        })
-=======
       http.post(this.tokenUrl, {
           code
         }, '')
->>>>>>> a3ae26436117178b607c14daa4617bf0c72efebf:src/ecomment.js
         .then(data => {
           this.accessToken = data.access_token
           this.update()
@@ -342,10 +334,4 @@ class Comment {
   }
 }
 
-<<<<<<< HEAD:src/gitment.js
-Gitment.autorun = autorun
-
-module.exports = Gitment
-=======
 module.exports = Comment
->>>>>>> a3ae26436117178b607c14daa4617bf0c72efebf:src/ecomment.js
