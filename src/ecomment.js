@@ -22,7 +22,7 @@ function extendRenderer(instance, renderer) {
   }
 }
 
-class Comment {
+export default class Comment {
   get accessToken() {
     return localStorage.getItem(LS_ACCESS_TOKEN_KEY)
   }
@@ -333,5 +333,3 @@ class Comment {
       })
   }
 }
-
-module.exports = Comment
