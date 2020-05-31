@@ -2,7 +2,7 @@
   "name": "@eeve/github-comment",
   "version": "0.0.2",
   "description": "A comment system based on GitHub Issues",
-  "main": "./dist/comment.js",
+  "main": "./dist/ecomment.js",
   "author": {
     "name": "eeve",
     "url": "https://github.com/eeve"
